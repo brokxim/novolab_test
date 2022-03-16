@@ -26,6 +26,14 @@
     text-align: center;
     top: 140px;
     width: 300px;
+    .onVisible{
+        position: absolute;
+        bottom: 107px;
+        right: 30px;
+        cursor: pointer;
+        &:hover{color: black;}
+        font-size: 17px;
+    }
     .kirish{
     display: inline-block;
     border: radius 4px;

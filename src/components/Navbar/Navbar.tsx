@@ -44,7 +44,7 @@ const onNews=(id:number)=>{
    {setCount(id)} 
     console.log(id)
     }else{
-    setCount(id)
+    setCount(1)
   }
 }
 
@@ -62,7 +62,8 @@ useEffect(() => {window.addEventListener('scroll', handleScroll)})
 
 useEffect(() => {
   setCount(countState)
-  setIsHome(false);
+  if(success){
+  setIsHome(false);}
      
  },[countState]) 
 return (

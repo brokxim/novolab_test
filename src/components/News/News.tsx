@@ -3,11 +3,11 @@ import { useNavigate} from 'react-router-dom';
 import {getPosts,updateSuccess,updateCount} from '../../redux/post';
 import {useDispatch,useSelector} from 'react-redux';
 import './News.scss';
+import {IoChevronDownCircleOutline} from 'react-icons/io5';
 import {BsPlusCircle} from 'react-icons/bs';
 import {FiMinusCircle} from 'react-icons/fi';
 import ReactPaginate from 'react-paginate';
 import Login from '../Login/Login';
-
 
 function News() {
   const dispatch = useDispatch();
@@ -16,16 +16,14 @@ function News() {
 
   const data=useSelector((state:any) =>state.posts.posts);
   const success = useSelector((state:any) =>state.posts.isSuccess);
-  
-  console.log(data)
-  console.log(success)
+  const login= useSelector((state:any) =>state.posts.login);
+  const password = useSelector((state:any) =>state.posts.password);
+  console.log(login,password)
   const ref=React.useRef<HTMLDivElement>(null);
   
-  let log= localStorage.getItem('Login');
-  let pass= localStorage.getItem('Password');
-
+  
 useEffect(() => {
-  if(pass && log){getPosts(dispatch)
+  if(password && login){getPosts(dispatch)
     dispatch(updateSuccess(true))
     dispatch(updateCount(0))
   }
@@ -51,7 +49,7 @@ useEffect(() => {
  }
 
 return <>
- { pass && log ?
+ { (password && login) ? 
    <div className='p-5 news'>
        <h2 className='text-center pb-3'>News page</h2>
         <div className='news_item'>
@@ -60,7 +58,7 @@ return <>
           .map((v:any,index:number) => <div key={index} ref={ref} className="title" onClick={() =>toggleShow(index)}>
               <div className='title_item' >
                 {v.title}
-              {show && index==id ? <FiMinusCircle className='title_item_plus'/>:<BsPlusCircle className='title_item_plus'/>}
+              <IoChevronDownCircleOutline className={`title_item_plus ${show && index==id ? 'rotet':''} ? `}/>
                 </div>
               { show && index==id ?  <div className="p-2 _show">
                     <p>{v.user_id}</p>

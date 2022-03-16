@@ -1,6 +1,6 @@
 import axios from 'axios'; 
 import {createAction,createReducer,createSlice, current} from '@reduxjs/toolkit'
-import {IS_SUCCESS,GET_POSTS,SET_COUNT } from '../types'
+import {IS_SUCCESS,GET_POSTS,SET_COUNT,SET_LOGIN,SET_PASSWORD } from '../types'
 import {postsType,initialStateType } from '../types'
   
 export const getPosts=async(dispatch:postsType)=>{
@@ -13,14 +13,23 @@ export const updateSuccess=(updateSuccess:boolean)=>{
 export const updateCount=(updateCount:number)=>{
         return{type:SET_COUNT,payload:updateCount }
 }
-
-export default createReducer({posts: [],isSuccess:false,count:-1},{
+export const updateLogin=(updateLogin:string)=>{
+    return{type:SET_LOGIN,payload:updateLogin }
+}
+export const updatePassword=(updatePassword:string)=>{
+    return{type:SET_PASSWORD,payload:updatePassword }
+}
+export default createReducer({posts: [],isSuccess:false,count:-1,login:'g',password:''},{
     GET_POSTS:(state,action)=>{
        state.posts=action.payload},
     IS_SUCCESS:(state,action)=>{
        state.isSuccess=action.payload},
     SET_COUNT:(state,action)=>{
-       state.count=action.payload}
+       state.count=action.payload},
+    SET_LOGIN:(state,action)=>{
+        state.login=action.payload},
+    SET_PASSWORD:(state,action)=>{
+        state.password=action.payload}
 })
 
 // const a=createSlice({

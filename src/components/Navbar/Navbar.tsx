@@ -22,25 +22,27 @@ import {
 function Navbar() {
   const dispatch = useDispatch();
   const success = useSelector((state:postsType) =>state.posts.isSuccess);
-
   const countState = useSelector((state:postsType) =>state.posts.count);
+  const login= useSelector((state:postsType) =>state.posts.login)
+  const password= useSelector((state:postsType) =>state.posts.password)
+
   console.log(countState)
   const [scroll, setScroll] = useState(false);
   const [isHome,setIsHome] = useState(true);
   const [count,setCount] = useState(countState);
   
+  let log= localStorage.getItem('Login');
+  let pass= localStorage.getItem('Password');
 
   const onHome=()=>{
     setIsHome(true)
     setCount(-1)
   };
-  let log= localStorage.getItem('Login');
-  let pass= localStorage.getItem('Password');
  
 const onNews=(id:number)=>{
     setIsHome(false);
     
-   if(log && pass){
+   if(login && password){
    {setCount(id)} 
     console.log(id)
     }else{
@@ -61,11 +63,12 @@ const list=[{id:0,text:'news'},{id:1,text:'login'}]
 useEffect(() => {window.addEventListener('scroll', handleScroll)})
 
 useEffect(() => {
+  if(login===log){
   setCount(countState)
-  if(success){
-  setIsHome(false);}
+  setIsHome(false);
+}
      
- },[countState]) 
+ },[login,password])
 return (
     <div
      className="navbar-m"

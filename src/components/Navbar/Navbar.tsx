@@ -62,6 +62,7 @@ useEffect(() => {window.addEventListener('scroll', handleScroll)})
 
 useEffect(() => {
   setCount(countState)
+  setIsHome(false);
      
  },[countState]) 
 return (

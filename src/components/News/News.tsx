@@ -28,7 +28,6 @@ useEffect(() => {
   if(pass && log){getPosts(dispatch)
     dispatch(updateSuccess(true))
     dispatch(updateCount(0))
-
   }
   else{navigate('/login')
 }
@@ -58,7 +57,7 @@ return <>
         <div className='news_item'>
           {data
           .slice(pagesVisited,pagesVisited+usersPerPage)
-          .map((v:any,index:number) => <div ref={ref} className="title" onClick={() =>toggleShow(index)}>
+          .map((v:any,index:number) => <div key={index} ref={ref} className="title" onClick={() =>toggleShow(index)}>
               <div className='title_item' >
                 {v.title}
               {show && index==id ? <FiMinusCircle className='title_item_plus'/>:<BsPlusCircle className='title_item_plus'/>}
@@ -89,5 +88,4 @@ return <>
     }
   </>
 }
-
 export default News;

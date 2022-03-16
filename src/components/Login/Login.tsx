@@ -23,22 +23,16 @@ function Login() {
    if(!login || !password){
     setFlag(false);
      alert('Please enter login or password')
-        // console.log('empty')
     }else if(login!==log || password !==pass){
       setFlag(false);
-      alert('others')
+      alert('login or password invalid')
     }else{
+      dispatch(updateCount(0))
       setFlag(true);
       navigate('/news')
-     dispatch(updateCount(0))
      }
     }
-
-// useEffect(() => {
-//   if(flag){
-//     navigate('/news')
-//   }
-// }, [])
+    
   return <>
   {!flag ?
    <div className="wrapper">
@@ -48,7 +42,7 @@ function Login() {
            <div className="wrapper_item_registration">
              <div className="wrapper_item_registration_form">
                <h4 className="enter">Log in</h4>
-               <form onSubmit={submitUser}>
+               <form onSubmit={submitUser} >
                  <input type="text" placeholder="Login" onChange={(e:any)=>setLogin(e.target.value)} required/>
                  <input type="password" placeholder="Parol" onChange={(e:any)=>setPassword(e.target.value)} required/>
                  <button type='submit' className="kirish"><span>Enter</span></button>

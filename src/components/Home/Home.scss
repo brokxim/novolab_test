@@ -1,0 +1,17 @@
+.home{ 
+    background-image: url(../img/a2af799eed5ed08b8e8d9bc7b914c148-700.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+      color:white;
+      &_paragraph{
+          height: 400px;
+          overflow:hidden;
+          overflow-y: auto;
+          background-image: conic-gradient(red, yellow, green);
+          border-style: outset;
+          border: 7px inset;
+          padding: 15px;
+          margin-bottom: 30px;
+        
+      }
+}

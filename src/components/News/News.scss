@@ -1,0 +1,67 @@
+.news{
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin:auto;
+       .react-paginate{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin-top: 50px;
+   }
+     .paginationBttns{
+       width: 80%;
+       height: 40px;
+       list-style: none;
+       display: flex;
+       justify-content: center;
+     a{
+         text-decoration: none;
+         padding: 10px;
+         margin: 8px;
+         border-radius: 5px;
+         border:1px solid #2b2eff;
+         color:#2b2eff;
+         cursor:pointer;
+         &:hover{
+             color:white;
+             background-color: #2b2eff;
+         }
+     }
+    }
+    .paginationActive a{
+        color:white;
+        background-color: #2b2eff;
+    }
+}
+.title{
+    width: 100%;
+    margin-bottom: 15px;
+    align-items: center;
+    padding: 0 15px;
+    min-height: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    &:hover{
+       background:rgba(255,255,255,255) ;
+    }
+    &_item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+        width: 100%;
+        
+        &:last-child{
+            margin-right: 15px;
+        }
+        &_plus{
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+        }
+    }
+}

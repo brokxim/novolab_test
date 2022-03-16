@@ -1,0 +1,100 @@
+.wrapper{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+   &_item{
+    // background-color: #fff;
+    min-height: 650px;
+    &_registration{
+    align-items: center;
+    background-color: #159671;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    margin: 32px;
+    min-height: 350px;
+    position: relative;
+    width: 1176px;
+    &_form{
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    min-height: 250px;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    top: 140px;
+    width: 300px;
+    .kirish{
+    display: inline-block;
+    border: radius 4px;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    background-color: #159678;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    width: 150px;
+    border:none;
+    &:hover span{
+        padding-right: 25px;
+    }
+    &:hover span:after{
+    opacity: 1;
+    right: 0;
+    }
+    span{
+        font-size: 17px;
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+     &:after{
+        content: "\00bb"; 
+        position:absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;   
+     }
+    }
+    }
+    .reset{
+        background: none;
+    border: none;
+    margin: 10px auto auto;
+    padding: 0;
+    text-decoration: underline;
+    &:hover{
+        text-decoration: none;
+    }
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        input{
+            margin-bottom: 10px;
+            align-items: center;
+            background: #F1F3F4;
+            border: none;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            outline: none;
+            width: 250px;
+            padding: 6px;
+        }
+    }
+    .enter{
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+    }    
+}
+   }
+}

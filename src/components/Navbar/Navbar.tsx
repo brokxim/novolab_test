@@ -21,9 +21,11 @@ function Navbar() {
   const dispatch = useDispatch();
   const success = useSelector((state:postsType) =>state.posts.isSuccess);
   const countState = useSelector((state:postsType) =>state.posts.count);
-  const login= useSelector((state:postsType) =>state.posts.login)
-  const password= useSelector((state:postsType) =>state.posts.password)
-
+  // const login= useSelector((state:postsType) =>state.posts.login)
+  // const password= useSelector((state:postsType) =>state.posts.password)
+  let login:any  = localStorage.getItem('user-login');
+  let password:any=localStorage.getItem('user-password')
+ 
   console.log(countState)
   const [scroll, setScroll] = useState(false);
   const [isHome,setIsHome] = useState(true);
@@ -39,7 +41,7 @@ function Navbar() {
  
 const onNews=(id:number)=>{
     setIsHome(false);
-    if(login && password){
+    if(login===log && password===pass){
       {setCount(id)} 
       console.log(id)
     }else{

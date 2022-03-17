@@ -28,7 +28,6 @@ const submitUser=(e:any)=>{
    localStorage.setItem('user-password',(e.target[1].value));
    let login:any  = localStorage.getItem('user-login');
    let password:any=localStorage.getItem('user-password')
-
    dispatch(updateLogin(login))
    dispatch(updatePassword(password))
 console.log(login,password);

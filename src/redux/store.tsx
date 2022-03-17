@@ -6,3 +6,13 @@ const store = configureStore(
     })
 
 export default store;
+ 
+store.subscribe(()=>{
+    const state = store.getState();
+    const persist = {
+        pologinst: state.posts.login,
+        count: state.posts.password
+      };
+      window.localStorage.setItem('state', JSON.stringify(persist));
+
+} )

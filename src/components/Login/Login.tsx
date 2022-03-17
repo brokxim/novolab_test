@@ -50,7 +50,7 @@ console.log(login,password);
   {!flag ?
    <div className="wrapper">
     <div className='mt-3'>
-       <h2 className='text-center'>Login page</h2>
+       <h3 className='text-center'>Login page</h3>
          <div className="wrapper_item">
            <div className="wrapper_item_registration">
              <div className="wrapper_item_registration_form">

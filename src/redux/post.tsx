@@ -1,11 +1,14 @@
 import axios from 'axios'; 
 import {createAction,createReducer,createSlice, current} from '@reduxjs/toolkit'
-import {IS_SUCCESS,GET_POSTS,SET_COUNT,SET_LOGIN,SET_PASSWORD } from '../types'
+import {IS_SUCCESS,GET_POSTS,SET_COUNT,SET_LOGIN,SET_PASSWORD ,SET_LOADING} from '../types'
 import {postsType,initialStateType } from '../types'
   
 export const getPosts=async(dispatch:postsType)=>{
 const response = await axios.get(`https://gorest.co.in/public/v1/posts`)
-    return dispatch({type:GET_POSTS,payload:response.data.data})
+    return dispatch({type:GET_POSTS,payload:response.data.data},{type:SET_LOADING,payload:false})
+}
+export const updateLoading=(dispatch:postsType)=>{
+    return dispatch({type:'SET_LOADING',payload:false}) 
 }
 export const updateSuccess=(updateSuccess:boolean)=>{
     return{type:IS_SUCCESS,payload:updateSuccess }
@@ -19,7 +22,7 @@ export const updateLogin=(updateLogin:string)=>{
 export const updatePassword=(updatePassword:string)=>{
     return{type:SET_PASSWORD,payload:updatePassword }
 }
-export default createReducer({posts: [],isSuccess:false,count:-1,login:'g',password:''},{
+export default createReducer({posts: [],isSuccess:false,count:-1,login:'g',password:'',loading:true},{
     GET_POSTS:(state,action)=>{
        state.posts=action.payload},
     IS_SUCCESS:(state,action)=>{
@@ -29,7 +32,9 @@ export default createReducer({posts: [],isSuccess:false,count:-1,login:'g',passw
     SET_LOGIN:(state,action)=>{
         state.login=action.payload},
     SET_PASSWORD:(state,action)=>{
-        state.password=action.payload}
+        state.password=action.payload},
+    SET_LOADING:(state,action)=>{
+        state.loading=action.payload}
 })
 
 // const a=createSlice({

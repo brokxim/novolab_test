@@ -13,9 +13,6 @@ function Login() {
   // const[password,setPassword]=useState('');
   const[flag,setFlag]=useState(false );
   const ref=useRef<HTMLInputElement>(null);
-interface TodoItems{
-  flag:boolean;
-}
 
  const dispatch = useDispatch();
  const [success,setSuccess]=useState(true);

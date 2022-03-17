@@ -39,13 +39,13 @@ function Navbar() {
  
 const onNews=(id:number)=>{
     setIsHome(false);
-    
-   if(login && password){
-   {setCount(id)} 
-    console.log(id)
+    if(login && password){
+      {setCount(id)} 
+      console.log(id)
     }else{
-    setCount(1)
-  }
+      setCount(1)
+    }
+    // setCount(id)
 }
 
 const list=[{id:0,text:'news'},{id:1,text:'login'}]

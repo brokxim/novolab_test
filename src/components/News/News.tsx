@@ -62,7 +62,7 @@ return <>
        
         <div>
           <h2 className='text-center pb-3'>News page</h2>
-            <div className='pl-5 pr-5 news_item'>
+            <div className='p-5'>
                 { 
                 data.slice(pagesVisited,pagesVisited+usersPerPage)
                 .map((v:any,index:number) => <div key={index} ref={ref} className="title" onClick={() =>toggleShow(index)}>

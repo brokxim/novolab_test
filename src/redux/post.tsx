@@ -16,23 +16,13 @@ export const updateSuccess=(updateSuccess:boolean)=>{
 export const updateCount=(updateCount:number)=>{
         return{type:SET_COUNT,payload:updateCount }
 }
-export const updateLogin=(updateLogin:string)=>{
-    return{type:SET_LOGIN,payload:updateLogin }
-}
-export const updatePassword=(updatePassword:string)=>{
-    return{type:SET_PASSWORD,payload:updatePassword }
-}
-export default createReducer({posts: [],isSuccess:false,count:-1,login:'g',password:'',loading:true},{
+export default createReducer({posts: [],isSuccess:false,count:-1,loading:true},{
     GET_POSTS:(state,action)=>{
        state.posts=action.payload},
     IS_SUCCESS:(state,action)=>{
        state.isSuccess=action.payload},
     SET_COUNT:(state,action)=>{
        state.count=action.payload},
-    SET_LOGIN:(state,action)=>{
-        state.login=action.payload},
-    SET_PASSWORD:(state,action)=>{
-        state.password=action.payload},
     SET_LOADING:(state,action)=>{
         state.loading=action.payload}
 })

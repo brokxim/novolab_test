@@ -69,7 +69,7 @@ function Login() {
                  </div>
                     <div className='d-flex'>{!success ? <p className={`${!success && 'text-danger' }`}>login or password invalid</p>:null}</div>
                  <button form={'form'} type='submit' className="kirish"><span>Enter</span></button>
-                 <button type='reset' className="reset">reset</button>
+                 <button type='reset' onClick={()=>setSuccess(true)} className="reset">reset</button>
                </form>
              </div>
            </div>

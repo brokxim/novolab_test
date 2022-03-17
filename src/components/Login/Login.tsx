@@ -1,26 +1,28 @@
-import React,{useEffect,useState,useRef} from 'react';
+import React,{useState,useRef,useEffect} from 'react';
 import { useNavigate} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
-import {updateCount,updateLogin,updatePassword} from '../../redux/post';
+import {updateCount,updateLoading} from '../../redux/post';
 import News from '../News/News';
+import {postsType} from "../../types";
 import {AiOutlineEyeInvisible} from 'react-icons/ai'
 import {MdOutlineVisibility} from 'react-icons/md'
 
 import './Login.scss';
 function Login() {
-     const navigate= useNavigate();
-  // const[login,setLogin]=useState('');
-  // const[password,setPassword]=useState('');
+
+  const navigate= useNavigate();
   const[flag,setFlag]=useState(false );
   const ref=useRef<HTMLInputElement>(null);
+  const loading = useSelector((state:postsType)=>state.posts.loading);
+ 
 
  const dispatch = useDispatch();
  const [success,setSuccess]=useState(true);
-  
+
  localStorage.setItem('Login',('admin'));
  localStorage.setItem('Password',('admin123'));
-
-const submitUser=(e:any)=>{
+ 
+ const submitUser=(e:any)=>{
    e.preventDefault();
    let log= localStorage.getItem('Login');
    let pass= localStorage.getItem('Password');
@@ -28,9 +30,6 @@ const submitUser=(e:any)=>{
    localStorage.setItem('user-password',(e.target[1].value));
    let login:any  = localStorage.getItem('user-login');
    let password:any=localStorage.getItem('user-password')
-   dispatch(updateLogin(login))
-   dispatch(updatePassword(password))
-console.log(login,password);
    if(!login || !password){
     setFlag(false);
     setSuccess(false)
@@ -39,10 +38,13 @@ console.log(login,password);
       setFlag(false);
       setSuccess(false) 
     }else{
-      dispatch(updateCount(0))
-      setSuccess(true) 
-      setFlag(true);
-      navigate('/news')
+     if(loading){
+        dispatch(updateLoading(false))}
+     else{dispatch(updateLoading(true))} 
+        dispatch(updateCount(0))
+        setSuccess(true) 
+        setFlag(true);
+        navigate('/news')
      }
     }
     const [show,setShow]=useState(false);
@@ -58,9 +60,9 @@ console.log(login,password);
              <div className="wrapper_item_registration_form">
                <h4 className="enter">Log in</h4>
                <form id={'form'} onSubmit={submitUser} autoComplete="new-password">
-                 <input type="text" className={`${!success && 'border border-danger' }`} placeholder="Login" autoComplete="new-password" required/>
+                 <input type="text" className={`${!success && 'border border-danger' }`} placeholder="Enter login" autoComplete="new-password" required/>
                  <div className='d-flex onVisible-wrap'>
-                    <input ref={ref} className={`onVisible-wrap ${!success && 'border border-danger' } `} type={show ?'text':'password'} autoComplete="new-password"  placeholder="Parol" required/>                    
+                    <input ref={ref} className={`onVisible-wrap ${!success && 'border border-danger' } `} type={show ?'text':'password'} autoComplete="new-password"  placeholder="Enter password" required/>                    
                     <span className='onVisible' onClick={toggleVisible}>
                        {show ? <MdOutlineVisibility/>:<AiOutlineEyeInvisible/>}
                     </span>  

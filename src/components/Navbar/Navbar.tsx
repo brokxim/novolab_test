@@ -1,10 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
-// import Logo from "../../Main_images/logo.png";
-// import HomeIcon from '@mui/icons-material/Home';
 import {postsType} from "../../types"
-import {useDispatch,useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import { AiOutlineHome,AiFillHome } from 'react-icons/ai';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,15 +16,13 @@ import {
   } from "@fortawesome/free-brands-svg-icons";
 
 function Navbar() {
-  const dispatch = useDispatch();
   const success = useSelector((state:postsType) =>state.posts.isSuccess);
   const countState = useSelector((state:postsType) =>state.posts.count);
-  // const login= useSelector((state:postsType) =>state.posts.login)
-  // const password= useSelector((state:postsType) =>state.posts.password)
-  let login:any  = localStorage.getItem('user-login');
+  const loading = useSelector((state:postsType) =>state.posts.loading);
+  let login:any = localStorage.getItem('user-login');
   let password:any=localStorage.getItem('user-password')
  
-  console.log(countState)
+  console.log(countState,loading)
   const [scroll, setScroll] = useState(false);
   const [isHome,setIsHome] = useState(true);
   const [count,setCount] = useState(countState);
@@ -38,19 +34,15 @@ function Navbar() {
     setIsHome(true)
     setCount(-1)
   };
- 
-const onNews=(id:number)=>{
+  const onNews=(id:number)=>{
     setIsHome(false);
     if(login===log && password===pass){
       {setCount(id)} 
-      console.log(id)
     }else{
       setCount(1)
     }
-    // setCount(id)
 }
-
-const list=[{id:0,text:'news'},{id:1,text:'login'}]
+ const list=[{id:0,text:'news'},{id:1,text:'login'}]
             
   const handleScroll = () => {
     let y = window.scrollY;
@@ -64,12 +56,12 @@ const list=[{id:0,text:'news'},{id:1,text:'login'}]
 useEffect(() => {window.addEventListener('scroll', handleScroll)})
 
 useEffect(() => {
-  if(  success){
-  setCount(0)
+  setCount(countState)
+  if(success){
   setIsHome(false);
 }
      
- },[login,password,success])
+ },[login,password,success,countState,loading])
 return (
     <div
      className="navbar-m"
@@ -78,7 +70,7 @@ return (
      <Container>
          <Row>
              <Col md='6' className="nav d-flex justify-content-center">
-             <Link to='/' className={`nav__list_item_link_n_l mt-2 mb-2 ${isHome ? 'text-primary isLine':''}`} onClick={onHome}>
+             <Link to='/' className={`nav__list_item_link_n_l mt-2 mb-2 ${isHome ? 'text-primary isLine ':''}`} onClick={onHome}>
              {isHome ? 
              <AiFillHome className={`aiFillHome`}  />
              :<AiOutlineHome className={`aiFillHome`} /> }
@@ -128,7 +120,5 @@ return (
          </Row>
      </Container>
     </div>
-  )
-}
-
+)}
 export default Navbar;

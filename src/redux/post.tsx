@@ -5,10 +5,10 @@ import {postsType,initialStateType } from '../types'
   
 export const getPosts=async(dispatch:postsType)=>{
 const response = await axios.get(`https://gorest.co.in/public/v1/posts`)
-    return dispatch({type:GET_POSTS,payload:response.data.data},{type:SET_LOADING,payload:false})
+    return dispatch({type:GET_POSTS,payload:response.data.data})
 }
-export const updateLoading=(dispatch:postsType)=>{
-    return dispatch({type:'SET_LOADING',payload:false}) 
+export const updateLoading=(updateLoading:boolean)=>{
+    return {type:SET_LOADING,payload:updateLoading}
 }
 export const updateSuccess=(updateSuccess:boolean)=>{
     return{type:IS_SUCCESS,payload:updateSuccess }

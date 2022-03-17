@@ -7,8 +7,6 @@ import {postsType} from "../../types"
 import {useDispatch,useSelector} from 'react-redux';
 
 import { AiOutlineHome,AiFillHome } from 'react-icons/ai';
-
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navbar.scss"
 
@@ -76,7 +74,7 @@ return (
      >
      <Container>
          <Row>
-             <Col md='6' className="nav">
+             <Col md='6' className="nav d-flex justify-content-center">
              <Link to='/' className={`nav__list_item_link_n_l mt-2 mb-2 ${isHome ? 'text-primary isLine':''}`} onClick={onHome}>
              {isHome ? 
              <AiFillHome className={`aiFillHome`}  />
@@ -95,8 +93,8 @@ return (
                )}
               </ul>
              </Col>
-             <Col md="6" className="socials" sm="12" xs="12"
-             >
+             <Col md='6' className="socials d-flex justify-content-center"
+             > 
             <ul className="list-inline">
               <li className="list-inline-item">
                 <a

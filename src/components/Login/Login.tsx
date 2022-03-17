@@ -11,8 +11,11 @@ function Login() {
      const navigate= useNavigate();
   // const[login,setLogin]=useState('');
   // const[password,setPassword]=useState('');
-  const[flag,setFlag]=useState(false);
+  const[flag,setFlag]=useState(false );
   const ref=useRef<HTMLInputElement>(null);
+interface TodoItems{
+  flag:boolean;
+}
 
  const dispatch = useDispatch();
  const [success,setSuccess]=useState(true);
@@ -24,10 +27,13 @@ const submitUser=(e:any)=>{
    e.preventDefault();
    let log= localStorage.getItem('Login');
    let pass= localStorage.getItem('Password');
-   let login=e.target[0].value;
-   let password=e.target[1].value;
-   dispatch(updateLogin(e.target[0].value))
-   dispatch(updatePassword(e.target[1].value))
+   localStorage.setItem('user-login',  e.target[0].value );
+   localStorage.setItem('user-password',(e.target[1].value));
+   let login:any  = localStorage.getItem('user-login');
+   let password:any=localStorage.getItem('user-password')
+
+   dispatch(updateLogin(login))
+   dispatch(updatePassword(password))
 console.log(login,password);
    if(!login || !password){
     setFlag(false);

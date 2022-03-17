@@ -16,14 +16,17 @@ function News() {
 
   const data=useSelector((state:any) =>state.posts.posts);
   const success = useSelector((state:any) =>state.posts.isSuccess);
-  const login= useSelector((state:any) =>state.posts.login);
-  const password = useSelector((state:any) =>state.posts.password);
-  console.log(login,password)
+  // const login= useSelector((state:any) =>state.posts.login);
+  // const password = useSelector((state:any) =>state.posts.password);
+  // console.log(login,password)
   const ref=React.useRef<HTMLDivElement>(null);
   
-  
+  let login:any  = localStorage.getItem('user-login');
+   let password:any=localStorage.getItem('user-password')
+
 useEffect(() => {
-  if(password && login){getPosts(dispatch)
+  if(password && login){
+    getPosts(dispatch)
     dispatch(updateSuccess(true))
     dispatch(updateCount(0))
   }

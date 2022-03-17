@@ -58,15 +58,16 @@ const list=[{id:0,text:'news'},{id:1,text:'login'}]
       setScroll(false);
     }
   };
+  console.log(success,countState)
 useEffect(() => {window.addEventListener('scroll', handleScroll)})
 
 useEffect(() => {
-  if(login===log){
-  setCount(countState)
+  if(  success){
+  setCount(0)
   setIsHome(false);
 }
      
- },[login,password])
+ },[login,password,success])
 return (
     <div
      className="navbar-m"

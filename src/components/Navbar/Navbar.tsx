@@ -90,7 +90,7 @@ return (
                )}
               </ul>
              </Col>
-             <Col md='6' className="socials d-flex justify-content-center"
+             <Col md='6' className="socials "
              > 
             <ul className="list-inline">
               <li className="list-inline-item">
@@ -99,22 +99,22 @@ return (
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FontAwesomeIcon icon={faInstagram} />
+                  <FontAwesomeIcon icon={faInstagram} className="w-50"/>
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                  <FontAwesomeIcon icon={faFacebook} />
+                  <FontAwesomeIcon icon={faFacebook} className="w-50"/>
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                  <FontAwesomeIcon icon={faTwitter} />
+                  <FontAwesomeIcon icon={faTwitter} className="w-50"/>
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href="https://youtube.com" target="_blank" rel="noreferrer">
-                  <FontAwesomeIcon icon={faYoutube} />
+                  <FontAwesomeIcon icon={faYoutube} className="w-50"/>
                 </a>
               </li>
             </ul>

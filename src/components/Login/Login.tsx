@@ -1,7 +1,7 @@
 import React,{useState,useRef,useEffect} from 'react';
 import { useNavigate} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
-import {updateCount,updateLoading} from '../../redux/post';
+import {updateCount,updateLogin} from '../../redux/post';
 import News from '../News/News';
 import {postsType} from "../../types";
 import {AiOutlineEyeInvisible} from 'react-icons/ai'
@@ -13,7 +13,7 @@ function Login() {
   const navigate= useNavigate();
   const[flag,setFlag]=useState(false );
   const ref=useRef<HTMLInputElement>(null);
-  const loading = useSelector((state:postsType)=>state.posts.loading);
+  const login = useSelector((state:postsType)=>state.posts.login);
  
 
  const dispatch = useDispatch();
@@ -38,9 +38,9 @@ function Login() {
       setFlag(false);
       setSuccess(false) 
     }else{
-     if(loading){
-        dispatch(updateLoading(false))}
-     else{dispatch(updateLoading(true))} 
+     if(login){
+        dispatch(updateLogin(false))}
+     else{dispatch(updateLogin(true))} 
         dispatch(updateCount(0))
         setSuccess(true) 
         setFlag(true);

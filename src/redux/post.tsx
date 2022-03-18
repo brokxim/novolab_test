@@ -10,13 +10,16 @@ const response = await axios.get(`https://gorest.co.in/public/v1/posts`)
 export const updateLoading=(updateLoading:boolean)=>{
     return {type:SET_LOADING,payload:updateLoading}
 }
+export const updateLogin=(updateLogin:boolean)=>{
+    return {type:SET_LOGIN,payload:updateLogin}
+}
 export const updateSuccess=(updateSuccess:boolean)=>{
     return{type:IS_SUCCESS,payload:updateSuccess }
 }
 export const updateCount=(updateCount:number)=>{
         return{type:SET_COUNT,payload:updateCount }
 }
-export default createReducer({posts: [],isSuccess:false,count:-1,loading:true},{
+export default createReducer({posts: [],isSuccess:false,count:-1,loading:true,login:true},{
     GET_POSTS:(state,action)=>{
        state.posts=action.payload},
     IS_SUCCESS:(state,action)=>{
@@ -24,7 +27,9 @@ export default createReducer({posts: [],isSuccess:false,count:-1,loading:true},{
     SET_COUNT:(state,action)=>{
        state.count=action.payload},
     SET_LOADING:(state,action)=>{
-        state.loading=action.payload}
+        state.loading=action.payload},
+    SET_LOGIN:(state,action)=>{
+        state.login=action.payload}
 })
 
 // const a=createSlice({

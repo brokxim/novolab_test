@@ -19,6 +19,9 @@ function Login() {
  const dispatch = useDispatch();
  const [success,setSuccess]=useState(true);
 
+ localStorage.setItem('Login',('admin'));
+ localStorage.setItem('Password',('admin123'));
+ 
  const submitUser=(e:any)=>{
    e.preventDefault();
    let log= localStorage.getItem('Login');

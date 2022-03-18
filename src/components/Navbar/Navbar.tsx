@@ -36,12 +36,14 @@ function Navbar() {
   };
   const onNews=(id:number)=>{
     setIsHome(false);
-    if(login===log && password===pass){
-      {setCount(id)} 
+    if(!log || login===log && password===pass){
+      setCount(id)
     }else{
       setCount(1)
     }
-}
+console.log('buu',log,login,id)
+  }
+
  const list=[{id:0,text:'news'},{id:1,text:'login'}]
             
   const handleScroll = () => {

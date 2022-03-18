@@ -1,6 +1,9 @@
 import React from 'react'
 import './Home.scss';
 function Home() {
+   localStorage.setItem('Login',('admin'));
+ localStorage.setItem('Password',('admin123'));
+ 
   return (
    <>
       <div className='p-5 home'>

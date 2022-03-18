@@ -28,6 +28,7 @@ function News() {
 useEffect(() => {
   if(password && login){
     setPost(data)
+  //  dispatch(updateLoading(false))
     getPosts(dispatch)
     
     dispatch(updateSuccess(true))

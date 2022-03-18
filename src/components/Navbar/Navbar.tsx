@@ -18,11 +18,10 @@ import {
 function Navbar() {
   const success = useSelector((state:postsType) =>state.posts.isSuccess);
   const countState = useSelector((state:postsType) =>state.posts.count);
-  const loading = useSelector((state:postsType) =>state.posts.loading);
+  const lo_gin = useSelector((state:postsType) =>state.posts.login);
   let login:any = localStorage.getItem('user-login');
   let password:any=localStorage.getItem('user-password')
  
-  console.log(countState,loading)
   const [scroll, setScroll] = useState(false);
   const [isHome,setIsHome] = useState(true);
   const [count,setCount] = useState(countState);
@@ -63,7 +62,7 @@ useEffect(() => {
   setIsHome(false);
 }
      
- },[login,password,success,countState,loading])
+ },[login,password,success,countState,lo_gin])
 return (
     <div
      className="navbar-m"

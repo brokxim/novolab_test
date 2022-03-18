@@ -13,8 +13,8 @@ function Login() {
   const navigate= useNavigate();
   const[flag,setFlag]=useState(false );
   const ref=useRef<HTMLInputElement>(null);
-  const login = useSelector((state:postsType)=>state.posts.login);
- 
+  const log_in = useSelector((state:postsType)=>state.posts.login);
+  const loading = useSelector((state:postsType)=>state.posts.loading);
 
  const dispatch = useDispatch();
  const [success,setSuccess]=useState(true);
@@ -23,7 +23,8 @@ function Login() {
  localStorage.setItem('Password',('admin123'));
  
  const submitUser=(e:any)=>{
-   e.preventDefault();
+   console.log(loading,log_in)
+ e.preventDefault();
    let log= localStorage.getItem('Login');
    let pass= localStorage.getItem('Password');
    localStorage.setItem('user-login',  e.target[0].value );
@@ -38,7 +39,7 @@ function Login() {
       setFlag(false);
       setSuccess(false) 
     }else{
-     if(login){
+     if(log_in){
         dispatch(updateLogin(false))}
      else{dispatch(updateLogin(true))} 
         dispatch(updateCount(0))
